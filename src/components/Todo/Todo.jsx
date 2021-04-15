@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { useSelector,useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Dropdown} from 'office-ui-fabric-react';
 import {useHistory } from 'react-router-dom';
 
 import {deleteTodo} from "../../actions";
 import {editTodo} from "../../actions";
+
+import {useSelector} from '../../hooks/useSelector';
 
 import { MdCreate } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
@@ -19,7 +21,9 @@ export default function Todo(props) {
 
     const dispatch = useDispatch();
 
-    const isDark = useSelector(state => state.darkTheme);
+    const state = useSelector();
+
+    const isDark = state.darkTheme;
 
     const todo = props.todo;
 

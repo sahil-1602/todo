@@ -1,10 +1,11 @@
 import React from 'react';
 
 
-import {useSelector,useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useHistory } from 'react-router-dom';
 
 import useInputState from '../../hooks/useInputState';
+import {useSelector} from '../../hooks/useSelector';
 import {addTodo} from '../../actions';
 
 import "./TodoForm.scss";
@@ -17,7 +18,9 @@ export default function TodoForm() {
 
     const history = useHistory();
 
-    const isDark = useSelector(state => state.darkTheme);
+    const state = useSelector();
+
+    const isDark = state.darkTheme;
 
     const [title, changeTitle, resetTitle] = useInputState("");
     const [desc, changeDesc, resetDesc] = useInputState("");

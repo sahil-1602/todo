@@ -7,7 +7,6 @@ import {useSelector} from 'react-redux';
 import Todo from '../Todo/Todo';
 import './TodoList.scss';
 
-
 export default function TodoList() {
     const history = useHistory();
 
