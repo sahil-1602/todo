@@ -1,17 +1,23 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import './Navbar.scss';
-import Switch from 'react-switch';
+
 import { useSelector ,useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom';
+import Switch from 'react-switch';
+
 import {toggleTheme} from '../../actions'
+
+import './Navbar.scss';
 
 export default function Navbar() {
     const dispatch = useDispatch()
+
     const [isDark, setIsDark] = useState(useSelector(state => state.darkTheme));
+
     const changeTheme = () => {
         setIsDark(!isDark);
         dispatch(toggleTheme());
     }
+    
     return (
         <div className={isDark ? "nav dark" : "nav light"}>
             <div className="nav__item">

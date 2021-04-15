@@ -1,8 +1,12 @@
 import React from 'react';
-import useInputState from '../../hooks/useInputState';
+
+
 import {useSelector,useDispatch} from 'react-redux';
-import {addTodo} from '../../actions';
 import {useHistory } from 'react-router-dom';
+
+import useInputState from '../../hooks/useInputState';
+import {addTodo} from '../../actions';
+
 import "./TodoForm.scss";
 
 
@@ -22,12 +26,14 @@ export default function TodoForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let data = addTodo(title, desc, due, status);
-        dispatch(data);
+
+        dispatch(addTodo(title, desc, due, status));
+
         resetTitle();
         resetDesc();
         resetDue();
         resetStatus();
+
         history.push("/");
     }
 
@@ -45,10 +51,11 @@ export default function TodoForm() {
                         required placeholder="Title" 
                         type="text"
                         id="title"
-                        autocomplete="off"
+                        autoComplete="off"
                     />
-                    <label for="title" class={labelClass}>Task</label>
+                    <label htmlFor="title" className={labelClass}>Task</label>
                 </div>
+
                 <div className="form__group">
                     <input
                         className={inputClass} 
@@ -57,10 +64,11 @@ export default function TodoForm() {
                         required placeholder="Description" 
                         type="text"
                         id="desc"
-                        autocomplete="off"
+                        autoComplete="off"
                     />
-                    <label for="desc" class={labelClass}>Description</label>
+                    <label htmlFor="desc" className={labelClass}>Description</label>
                 </div>
+
                 <div className="form__group">
                     <input 
                         value={due}
@@ -70,10 +78,11 @@ export default function TodoForm() {
                         type="text"
                         onFocus={(e) => e.target.type='date'}
                         id="date"
-                        autocomplete="off"
+                        autoComplete="off"
                     />
-                    <label for="date" class={labelClass}>Due Date</label>
+                    <label htmlFor="date" className={labelClass}>Due Date</label>
                 </div>
+
                 <div className="form__group">
                     <select onChange={changeStatus} id="status" className={inputClass}>
                         <option value="todo">Todo</option>
@@ -81,8 +90,9 @@ export default function TodoForm() {
                         <option value="stalled">Stalled</option>
                         <option value="done">Done</option>
                     </select>
-                    <label for="status" class={labelClass}>Status</label>
+                    <label htmlFor="status" className={labelClass}>Status</label>
                 </div>
+                
                 <button className="button" type="submit">SUBMIT</button>
             </form>
         </div>

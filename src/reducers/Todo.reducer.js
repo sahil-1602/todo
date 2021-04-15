@@ -2,7 +2,6 @@ import uuid from "uuid/dist/v4";
 export const todoReducer = (state=[], action) => {
     switch(action.type){
         case "ADD":
-            console.log(state);
             return [...state, 
                 {
                     id: uuid(),

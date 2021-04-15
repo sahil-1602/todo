@@ -1,7 +1,7 @@
 import React from 'react';
-import './Todo.scss';
-import {Dropdown} from 'office-ui-fabric-react';
+
 import { useSelector,useDispatch} from 'react-redux';
+import {Dropdown} from 'office-ui-fabric-react';
 import {useHistory } from 'react-router-dom';
 
 import {deleteTodo} from "../../actions"
@@ -9,22 +9,30 @@ import {deleteTodo} from "../../actions"
 import { MdCreate } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
+import './Todo.scss';
+
 
 
 export default function Todo(props) {
     const history = useHistory();
+
     const dispatch = useDispatch();
+
     const isDark = useSelector(state => state.darkTheme);
+
     const todo = props.todo;
+
     const options = [
         {key: "todo", text: "ToDo"},
         {key: "on", text: "Ongoing"},
         {key: "stalled", text: "Stalled"},
         {key: "done", text: "Done"},
     ];
+
     const handleDelete = (id) => {
         dispatch(deleteTodo(id));
     }
+    
     const handleEdit = (id) => {
         history.push(`/edit/${id}`);
     }
