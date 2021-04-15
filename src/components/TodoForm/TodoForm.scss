@@ -113,6 +113,19 @@
   color: #fff;
   border: 1px solid #000;
 
+  @media (max-width: 1000px) {
+    width: 40%;
+    left: 30%;
+  }
+  @media (max-width: 800px) {
+    width: 50%;
+    left: 25%;
+  }
+  @media (max-width: 600px) {
+    width: 80%;
+    left: 5%;
+  }
+
   h2 {
     text-align: center;
   }
