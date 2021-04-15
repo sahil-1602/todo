@@ -4,7 +4,7 @@ import useInputState from '../../hooks/useInputState';
 import {useDispatch} from 'react-redux';
 import {useHistory } from 'react-router-dom';
 
-import {useSelector} from '../../hooks/useSelector';
+import {useSelector} from 'react-redux';
 
 import {editTodo} from '../../actions';
 import "../TodoForm/TodoForm.scss";
@@ -14,11 +14,10 @@ import "../TodoForm/TodoForm.scss";
 export default function EditTodoForm(props) {
     const history = useHistory();
     const dispatch = useDispatch();
-    const state = useSelector();
 
-    const todos = state.todo;
+    const todos = useSelector(state => state.todo);
     
-    const isDark = state.darkTheme;
+    const isDark = useSelector(state => state.darkTheme);
     
     let id = window.location.pathname;
     id = id.substr(11, id.length);

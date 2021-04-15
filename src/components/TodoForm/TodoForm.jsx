@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import {useHistory } from 'react-router-dom';
 
 import useInputState from '../../hooks/useInputState';
-import {useSelector} from '../../hooks/useSelector';
+import {useSelector} from 'react-redux';
 import {addTodo} from '../../actions';
 
 import "./TodoForm.scss";
@@ -18,9 +18,7 @@ export default function TodoForm() {
 
     const history = useHistory();
 
-    const state = useSelector();
-
-    const isDark = state.darkTheme;
+    const isDark = useSelector(state =>  state.darkTheme);
 
     const [title, changeTitle, resetTitle] = useInputState("");
     const [desc, changeDesc, resetDesc] = useInputState("");
@@ -127,7 +125,7 @@ export default function TodoForm() {
                 <div className="btn-container">
                     <button className="button" type="submit">SUBMIT</button>
                     <div></div>
-                    <button onClick={() => history.push("/todo")} className="button" >CANCEL</button>
+                    <button onClick={() => history.push("/todo/list")} className="button" >CANCEL</button>
                 </div>    
 
             </form>
