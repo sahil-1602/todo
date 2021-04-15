@@ -4,7 +4,8 @@ import { useSelector,useDispatch} from 'react-redux';
 import {Dropdown} from 'office-ui-fabric-react';
 import {useHistory } from 'react-router-dom';
 
-import {deleteTodo} from "../../actions"
+import {deleteTodo} from "../../actions";
+import {editTodo} from "../../actions";
 
 import { MdCreate } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
@@ -36,6 +37,11 @@ export default function Todo(props) {
     const handleEdit = (id) => {
         history.push(`/edit/${id}`);
     }
+
+    const handleDropDown = (e, selectedOption) => {
+        dispatch(editTodo(todo.id, todo.title, todo.desc, todo.due, selectedOption.key));
+    }
+
     return (
         <div className="todo">
             <div className={isDark ? "todo__card dark" : "todo__card"}>
@@ -57,7 +63,7 @@ export default function Todo(props) {
                             placeholder="change"
                             options={options}
                             selectedKey={todo.status}
-                            onChange = {(e, selectedOption) => console.log(selectedOption)}
+                            onChange = {handleDropDown}
                         />
                     </div>
                 </div>
