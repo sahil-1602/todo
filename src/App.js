@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
@@ -12,20 +12,21 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
+      <Redirect to="/todo/list"/>
       <Switch>
         <Route 
           exact
-          path="/"
+          path="/todo/list"
           component={TodoList}
         />
         <Route 
           exact
-          path="/form"
+          path="/todo/form"
           component={TodoForm}
         />
         <Route
           exact
-          path="/edit/:id"
+          path="/todo/edit/:id"
           component={EditTodoForm}
         />
       </Switch>

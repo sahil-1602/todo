@@ -40,7 +40,7 @@ export default function Todo(props) {
     }
     
     const handleEdit = (id) => {
-        history.push(`/edit/${id}`);
+        history.push(`/todo/edit/${id}`);
     }
 
     const handleDropDown = (e, selectedOption) => {

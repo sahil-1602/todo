@@ -15,7 +15,7 @@ export default function TodoList() {
     const isDark = useSelector(state => state.darkTheme);
 
     const handleClick = () => {
-        history.push("/form");
+        history.push("/todo/form");
     }
 
     return (

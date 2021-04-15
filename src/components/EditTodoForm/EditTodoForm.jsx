@@ -21,7 +21,7 @@ export default function EditTodoForm(props) {
     const isDark = state.darkTheme;
     
     let id = window.location.pathname;
-    id = id.substr(6, id.length);
+    id = id.substr(11, id.length);
     let todo = todos.find(todo => todo.id === id);
 
     
@@ -41,7 +41,7 @@ export default function EditTodoForm(props) {
         resetDue();
         resetStatus();
 
-        history.push("/");
+        history.push("/todo/list");
     }
     const inputClass = isDark ? "form__input dark" : "form__input";
     const labelClass = isDark ? "form__label dark" : "form__label";

@@ -25,7 +25,7 @@ export default function Navbar() {
             </div>
             <div className="nav__item">
                 <div className="nav__item-brand">
-                    <Link title="link" to="/">Todos-App</Link>
+                    <Link title="link" to="/todo/list">Todos-App</Link>
                 </div>
             </div>
         </div>

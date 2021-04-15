@@ -48,7 +48,7 @@ export default function TodoForm() {
         resetDue();
         resetStatus();
 
-        history.push("/");
+        history.push("/todo/list");
     }
 
     return (
@@ -127,7 +127,7 @@ export default function TodoForm() {
                 <div className="btn-container">
                     <button className="button" type="submit">SUBMIT</button>
                     <div></div>
-                    <button onClick={() => history.push("/")} className="button" >CANCEL</button>
+                    <button onClick={() => history.push("/todo")} className="button" >CANCEL</button>
                 </div>    
 
             </form>
