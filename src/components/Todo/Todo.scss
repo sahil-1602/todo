@@ -9,6 +9,11 @@
     text-transform: uppercase;
   }
 
+  &__desc {
+    line-height: 1rem;
+    width: 100%;
+  }
+
   &__card {
     border-radius: 0.4rem;
     width: 60%;
@@ -46,4 +51,8 @@
       }
     }
   }
+}
+
+.todo.done {
+  text-decoration: line-through;
 }

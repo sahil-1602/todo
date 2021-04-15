@@ -21,11 +21,11 @@ export default function Navbar() {
     return (
         <div className={isDark ? "nav dark" : "nav light"}>
             <div className="nav__item">
-                <Switch onChange={changeTheme} checked={isDark}/>
+                <Switch title="switch" onChange={changeTheme} checked={isDark}/>
             </div>
             <div className="nav__item">
                 <div className="nav__item-brand">
-                    <Link to="/">Todos-App</Link>
+                    <Link title="link" to="/">Todos-App</Link>
                 </div>
             </div>
         </div>

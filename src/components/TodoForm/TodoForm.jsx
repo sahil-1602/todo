@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
 import {useDispatch} from 'react-redux';
@@ -27,9 +27,20 @@ export default function TodoForm() {
     const [due, changeDue, resetDue] = useInputState("");
     const [status, changeStatus, resetStatus] = useInputState("");
 
+    const [popup, setPopup] = useState("popup");
+    const inputClass = isDark ? "form__input dark" : "form__input";
+    const labelClass = isDark ? "form__label dark" : "form__label";
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        setPopup("popup active");  
+    }
 
+    const handlePopupCancel = (e) => {
+        setPopup("popup");
+    }
+
+    const handlePopupConfirm = (e) => {
         dispatch(addTodo(title, desc, due, status));
 
         resetTitle();
@@ -40,11 +51,29 @@ export default function TodoForm() {
         history.push("/");
     }
 
-    const inputClass = isDark ? "form__input dark" : "form__input";
-    const labelClass = isDark ? "form__label dark" : "form__label";
-
     return (
         <div className={isDark ? "container dark" : "container light"}>
+
+            <div className={popup}>
+                <h2>YOUR TODO</h2>
+                <div className="popup__section popup__head">
+                    <span>Task :</span> {title} 
+                </div>
+                <div className="popup__section popup__desc">
+                    <span>Description :</span> {desc} 
+                </div>
+                <div className="popup__section popup__date">
+                    <span>Due Date :</span> {due} 
+                </div>
+                <div className="popup__section popup__status">
+                    <span>Status :</span> {status} 
+                </div>
+                <div className="popup__btns">
+                    <div onClick={handlePopupConfirm} className="popup__btns-confirm">Confirm</div>
+                    <div onClick={handlePopupCancel} className="popup__btns-cancel">Cancel</div>
+                </div>
+            </div>
+
             <form className="form"  onSubmit={handleSubmit}>
                 <div  className="form__group">
                     <input
@@ -95,8 +124,12 @@ export default function TodoForm() {
                     </select>
                     <label htmlFor="status" className={labelClass}>Status</label>
                 </div>
-                
-                <button className="button" type="submit">SUBMIT</button>
+                <div className="btn-container">
+                    <button className="button" type="submit">SUBMIT</button>
+                    <div></div>
+                    <button onClick={() => history.push("/")} className="button" >CANCEL</button>
+                </div>    
+
             </form>
         </div>
     )

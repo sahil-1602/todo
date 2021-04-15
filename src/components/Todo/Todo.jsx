@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {useDispatch} from 'react-redux';
 import {Dropdown} from 'office-ui-fabric-react';
@@ -26,6 +26,7 @@ export default function Todo(props) {
     const isDark = state.darkTheme;
 
     const todo = props.todo;
+    const [status, setStatus] = useState(todo.id);
 
     const options = [
         {key: "todo", text: "ToDo"},
@@ -44,10 +45,11 @@ export default function Todo(props) {
 
     const handleDropDown = (e, selectedOption) => {
         dispatch(editTodo(todo.id, todo.title, todo.desc, todo.due, selectedOption.key));
+        setStatus(selectedOption.key);
     }
 
     return (
-        <div className="todo">
+        <div className={status === "done" ? "todo done" : "todo" }>
             <div className={isDark ? "todo__card dark" : "todo__card"}>
                 <div className="todo__head">
                     <div>
@@ -59,7 +61,7 @@ export default function Todo(props) {
                     </div>
                 </div>
                 
-                <p className="todo__desc">{todo.desc}</p>
+                <div className="todo__desc">{todo.desc}</div>
                 <div className="todo__info">
                     <p className="todo__due">Due by {todo.due}</p>
                     <div className="todo__status">
