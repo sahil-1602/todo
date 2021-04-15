@@ -1,0 +1,33 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.todo {
+  width: 100%;
+}
+
+.list {
+  padding-top: 2rem;
+  height: 85vh;
+  margin-top: 1px;
+}
+
+.list.light {
+  background-color: #fff;
+}
+
+.list.dark {
+  background-color: #030303;
+}
+
+.container.light {
+  background-color: #fff;
+}
+
+.container.dark {
+  background-color: #030303;
+}
+
+// #1D1D1D
